@@ -1,0 +1,43 @@
+<div class="container" style="padding-top: 15px; padding-bottom: 30px;">
+    <mat-card class="mat-elevation-z8">
+        <div class="d-flex bd-highlight" id="titulo" *ngIf="HabilitarBtn">
+            <div class="w-100 bd-highlight">
+                <h5>CONFIGURACIÓN MENSAJE DE CUMPLEAÑOS</h5>
+            </div>
+            <div class="flex-shrink-1 bd-highlight">
+                <button type="submit" class="btn btn-outline-light btn-sm" style="margin-top: -3px;"
+                    (click)="AbrirRegistrarMensaje()">
+                    Añadir
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="container" *ngFor="let c of cumple">
+            <div id="titulo">
+                <span>CONFIGURACIÓN MENSAJE DE CUMPLEAÑOS</span>
+                <button class="btn btn-outline-light btn-sm" style="float: right; margin-right: 10px; margin-top: -3px;"
+                    (click)="EditarMensaje(c)">
+                    Editar
+                </button>
+            </div>
+            <div style="padding-top: 15px;">
+                <div class="caja">
+                    <label>Asunto:</label>
+                    <span>{{c.titulo}}</span>
+                </div>
+                <div class="caja" *ngIf="c.url != null && c.url != ''">
+                    <label>Link:</label>
+                    <a href="{{c.url}}" target="_blank"> ! VER FELICITACIONES ! </a>
+                </div>
+                <div class="caja">
+                    <label>Mensaje:</label>
+                    <span>{{c.mensaje}} </span>
+                </div>
+                <div class="caja" style="padding-bottom: 30px;">
+                    <label>Imagen:</label><br>
+                    <img class="img-fluid rounded mx-auto d-block" src="{{API_URL}}/birthday/img/{{c.img}}">
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
